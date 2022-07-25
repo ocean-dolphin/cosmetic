@@ -1,0 +1,48 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - Xin chào
+    - Chào shop
+    - Có ai ở đây không?
+    - Chào bạn
+    - Chào 
+
+- intent: goodbye
+  examples: |
+    - Tạm biệt
+    - bye
+    - goodbye
+    - bye bye
+
+- intent: xuatxu
+  examples: |
+   - Mỹ phẩm Sakura có xuất xứ từ đâu?
+   - Nguồn gốc của mỹ phẩm Sakura ở đâu?
+
+- intent: product
+  examples: |
+   - Shop có những loại sản phẩm nào?
+   - Ở đây có bao nhiêu loại sản phẩm?
+
+- intent: give_order
+  examples: |
+    - Tôi muốn đặt kem trang điểm, chống nắng
+    - Tôi muốn mua kem dưỡng trắng da
+    - Tôi muốn order kem tắm trắng
+    - Mình muốn mua kem trị nám, tàn nhang
+    - Bán cho chị kem trị mụn
+    - Lấy cho em sữa rửa mặt
+    - Bán cho mình măt nạ trắng da
+    - Mình muốn order viên uống trắng da, trị nám
+    - Chốt cho chị tinh dầu khoái cảm
+
+- intent: information_order
+  examples: |
+    - Tôi muốn biết thông tin giao hàng của tôi
+    - Tôi có thể xem lại thông tin giao hàng của tôi được không?
+    - Thông tin giao hàng của tôi là gì?
+
+

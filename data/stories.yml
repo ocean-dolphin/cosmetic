@@ -1,0 +1,56 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: xuatxu
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: xuatxu
+  - action: utter_xuatxu
+
+- story: sanpham
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: product
+  - action: utter_product
+
+- story: sanpham
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: product
+  - action: utter_product
+
+- story: order
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: give_order
+  - action: name_form
+  - active_loop: name_form
+  - slot_was_set:
+    - requested_slot: name_guest
+  - slot_was_set:
+    - name_guest: vincent
+  - slot_was_set:
+    - requested_slot: phone
+  - slot_was_set:
+    - phone: 0961234567
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - address: Hanoi
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+
+

@@ -1,0 +1,102 @@
+version: "3.1"
+
+intents:
+  - greet
+  - information_order
+  - xuatxu
+  - product
+  - give_order
+  - goodbye
+
+
+forms:
+  name_form:
+    required_slots:
+      - name_guest
+      - phone
+      - address
+
+slots:
+  name_guest:
+    type: text
+    influence_conversation: true
+    mappings:
+          - type: from_text
+            conditions:
+              - active_loop: name_form
+                requested_slot: name_guest
+
+  phone:
+    type: text
+    influence_conversation: true
+    mappings:
+          - type: from_text
+            conditions:
+              - active_loop: name_form
+                requested_slot: phone
+
+  address:
+    type: text
+    influence_conversation: true
+    mappings:
+          - type: from_text
+            conditions:
+              - active_loop: name_form
+                requested_slot: address
+
+responses:
+  utter_greet:
+    - text: "Kính chào quý khách, cửa hàng mỹ phẩm Sakura rất vui khi được tiếp đón quý khách. "
+
+  utter_ask:
+    - text: "Dạ vâng. Shop có thể giúp gì cho quý khách ạ?"
+
+  utter_xuatxu:
+    - text: "Mỹ phẩm Sakura là mỹ phẩm mang thương hiệu Nhật Bản, thuộc tập đoàn dược mỹ phẩm toàn cầu Sakura Beauty Solution có trụ sở tại Mỹ, đây là tập đoàn chuyên sở hữu các dòng sản phẩm điều trị và chăm sóc da chuyên sâu, đặc biệt là đối với làn da của phụ nữ Việt."
+
+  utter_product:
+    - text: "Bên shop em có 8 loại sản phẩm chính:
+          - Kem trang điểm, chống nắng
+          - Kem dưỡng trắng da
+          - Kem tắm trắng
+          - Kem trị nám, tàn nhang
+          - Kem trị mụn
+          - Sữa rửa mặt
+          - Măt nạ trắng da
+          - Viên uống trắng da, trị nám
+          - Tinh dầu khoái cảm"
+
+  utter_goodbye:
+    - text: "Xin chào và hẹn gặp lại qúy khách. Shop hy vọng bạn sẽ có những trải nghiệm tuyệt vời khi sử dụng sản phẩm ở đây. Rất mong sẽ tiếp tục nhận được sự ủng hộ của bạn trong thời gian tới."
+    - text: "Cảm ơn bạn đã tin tưởng và sử dụng sản phẩm của chúng tôi. Vui lòng cho chúng tôi biết nếu chúng tôi có thể làm bất cứ điều gì khác để hỗ trợ bạn, giúp bạn có những trải nghiệm tuyệt vời nhất với sản phẩm của chúng tôi."
+    - text: "Cảm ơn đã đặt hàng và tạo nên một ngày tuyệt vời cho chúng tôi. Chúc bạn cũng có một ngày tươi đẹp và vui vẻ."
+    - text: "Cảm ơn bạn đã đặt hàng và ủng hộ của hàng nhỏ của tôi! Tôi hy vọng rằng sẽ tiếp tục nhận được sự ủng hộ của bạn trong thời gian tới."
+    - text: "Cảm ơn quý khách đã tin tưởng và sử dụng sản phẩm của chúng tôi. Hãy liên hệ cho chúng tôi nếu chúng tôi có thể làm bất cứ điều gì khác để hỗ trợ bạn, giúp bạn có những trải nghiệm tuyệt vời nhất với sản phẩm của chúng tôi."
+
+
+  utter_ask_name_guest:
+    - text:  "Tên của quý khách là gì ạ?"
+
+  utter_ask_phone:
+    - text: "Số điện thoại của quý khách là gì ạ?"
+
+  utter_ask_address:
+    - text: "Địa chỉ giao hàng của quý khách là gì ạ?"
+
+  utter_submit:
+    - text: "Cảm ơn quý khách đã lựa chọn sản phẩm bên shop."
+
+  utter_slots_values:
+    - text: "Thông tin giao hàng của quý khách là Khách hàng {name_guest} có số điện thoại {phone} ở địa chỉ {address}!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - give_order
+  - utter_slots_values
+  - utter_submit
+  - goodbye
+  - utter_goodbye
+  - validate_name_form
